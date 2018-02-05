@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Positive>ДА</Positive>
+  <Negative>НЕТ</Negative>
+  <Lamagna>
+    <Text1>Текст1 (Вопрос о регистрации)</Text1>
+    <Text2>Текст2 (Любой текст вопроса)</Text2>
+    <Text3>Текст3 (Инструкция о регистрации)</Text3>
+    <Text4>Текст4 (Любая информация)</Text4>
+    <Button1>Кнопка1</Button1>
+    <Button2>Кнопка2</Button2>
+    <Button3>Кнопка3</Button3>
+    <Greeting>Мандарин</Greeting>
+  </Lamagna>
+  <Trippier>
+    <Text1>Текст1 (Любой текст (призыв))</Text1>
+    <Text2>Текст2 (Любой текст (удержание))</Text2>
+    <Text3>Текст3 (Любой текст)</Text3>
+    <Button1>Кнопка1</Button1>
+  </Trippier>
+  <MainProduct>
+    <Text1>Текст1 (Любой текст (продажа))</Text1>
+    <Button1>Кнопка1</Button1>
+    <Button2>К началу</Button2>
+    <Contacts>Контакты</Contacts>
+  </MainProduct>
+</Root>

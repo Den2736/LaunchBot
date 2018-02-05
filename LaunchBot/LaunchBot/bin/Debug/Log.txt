@@ -1,0 +1,280 @@
+
+20.01.2018 21:48:49: Bot is online.
+20.01.2018 21:50:03: Bot was disabled by Terminate Button
+20.01.2018 21:50:32: Bot is online.
+20.01.2018 21:51:01: Bot was disabled by Terminate Button
+20.01.2018 21:51:10: Bot is online.
+20.01.2018 21:51:29: Bot is online.
+20.01.2018 21:54:59: Bot was disabled by Terminate Button
+20.01.2018 22:01:21: Bot is online.
+20.01.2018 22:01:45: Bot was disabled by Terminate Button
+20.01.2018 22:03:18: Bot is online.
+20.01.2018 22:05:27: Bot was disabled by Terminate Button
+23.01.2018 14:28:09: Bot activation error. System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 73
+23.01.2018 14:28:39: Bot activation error. System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 73
+23.01.2018 14:29:58: Bot is online.
+23.01.2018 14:30:34: Bot is online.
+23.01.2018 14:31:46: Bot is online.
+23.01.2018 14:33:11: Bot is online.
+23.01.2018 14:33:47: Bot is online.
+23.01.2018 14:35:31: Bot is online.
+23.01.2018 14:36:25: Bot is online.
+23.01.2018 14:36:50: Bot is online.
+23.01.2018 14:39:27: Bot is online.
+23.01.2018 14:39:37: Bot was disabled by Terminate Button
+23.01.2018 14:39:45: Bot is online.
+23.01.2018 14:39:47: Bot was disabled by Terminate Button
+23.01.2018 14:39:57: Bot is online.
+25.01.2018 15:03:01: Bot is online.
+25.01.2018 15:04:18: Bot is online.
+25.01.2018 15:05:26: Bot is online.
+25.01.2018 15:16:50: Bot is online.
+25.01.2018 15:17:26: Bot is online.
+25.01.2018 15:32:40: Bot is online.
+25.01.2018 15:33:15: Bot was disabled by Terminate Button
+25.01.2018 15:34:31: Bot is online.
+25.01.2018 15:35:14: Bot was disabled by Terminate Button
+25.01.2018 15:35:23: Bot is online.
+25.01.2018 15:35:37: Bot was disabled by Terminate Button
+25.01.2018 19:26:06: Bot is online.
+25.01.2018 19:46:54: Bot is online.
+25.01.2018 19:47:54: Bot was disabled by Terminate Button
+26.01.2018 10:51:24: Bot is online.
+26.01.2018 10:51:49: Bot is online.
+26.01.2018 10:53:01: Bot was disabled by Terminate Button
+26.01.2018 11:33:14: Bot is online.
+26.01.2018 11:34:16: Bot is online.
+26.01.2018 11:35:19: Bot is online.
+26.01.2018 11:36:12: Bot is online.
+26.01.2018 11:37:05: Bot is online.
+26.01.2018 11:38:13: Bot is online.
+26.01.2018 11:47:48: Bot is online.
+26.01.2018 11:48:52: Bot is online.
+26.01.2018 11:48:57: Bot was disabled by Terminate Button
+28.01.2018 11:47:15: Bot is online.
+28.01.2018 11:47:58: Bot was disabled by Terminate Button
+28.01.2018 11:54:09: Bot is online.
+28.01.2018 11:54:59: Bot is online.
+28.01.2018 11:55:09: Bot was disabled by Terminate Button
+28.01.2018 11:57:54: Bot is online.
+28.01.2018 12:00:11: Bot activation error. System.AggregateException: Произошла одна или несколько ошибок. ---> System.Net.Http.HttpRequestException: Произошла ошибка при отправке запроса. ---> System.Net.WebException: Невозможно соединиться с удаленным сервером ---> System.Net.Sockets.SocketException: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера 149.154.167.199:443
+   в System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   в System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   в System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Telegram.Bot.TelegramBotClient.<SendWebRequestAsync>d__124`1.MoveNext()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   в System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   в System.Threading.Tasks.Task`1.get_Result()
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 75
+---> (Внутреннее исключение #0) System.Net.Http.HttpRequestException: Произошла ошибка при отправке запроса. ---> System.Net.WebException: Невозможно соединиться с удаленным сервером ---> System.Net.Sockets.SocketException: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера 149.154.167.199:443
+   в System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   в System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   в System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   в Telegram.Bot.TelegramBotClient.<SendWebRequestAsync>d__124`1.MoveNext()<---
+
+29.01.2018 19:26:21: Bot is online.
+29.01.2018 19:28:00: Bot is online.
+29.01.2018 19:28:30: Bot was disabled by Terminate Button
+29.01.2018 21:05:37: Ошибка загрузки текстов System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 47
+29.01.2018 21:06:13: Bot is online.
+29.01.2018 21:06:22: Bot was disabled by Terminate Button
+29.01.2018 21:06:32: Bot is online.
+29.01.2018 21:06:36: Bot was disabled by Terminate Button
+29.01.2018 21:07:49: Bot is online.
+29.01.2018 21:08:17: Bot is online.
+29.01.2018 21:11:46: Bot is online.
+29.01.2018 21:11:58: Bot was disabled by Terminate Button
+30.01.2018 16:08:51: Ошибка загрузки текстов System.ArgumentException: Не найден метод присваивания значения свойству.
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 109
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 48
+30.01.2018 16:09:29: Ошибка загрузки текстов System.ArgumentException: Не найден метод присваивания значения свойству.
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 109
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 48
+30.01.2018 16:38:47: Ошибка загрузки текстов System.Reflection.TargetException: Объект не соответствует конечному типу.
+   в System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   в System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 128
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 48
+30.01.2018 16:41:19: Ошибка загрузки текстов System.Reflection.TargetException: Объект не соответствует конечному типу.
+   в System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   в System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 128
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 48
+30.01.2018 16:41:51: Ошибка загрузки текстов System.Reflection.TargetException: Объект не соответствует конечному типу.
+   в System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   в System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 128
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 48
+30.01.2018 16:53:11: Ошибка загрузки текстов System.Reflection.TargetException: Объект не соответствует конечному типу.
+   в System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   в System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.GetValue(Object obj, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.GetValue(Object obj, Object[] index)
+   в System.Reflection.PropertyInfo.GetValue(Object obj)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 122
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 48
+30.01.2018 16:57:16: Bot is online.
+30.01.2018 16:57:18: Bot was disabled by Terminate Button
+30.01.2018 16:57:26: Bot is online.
+30.01.2018 16:57:46: Bot was disabled by Terminate Button
+30.01.2018 21:17:25: Bot is online.
+30.01.2018 21:19:41: Ошибка загрузки текстов System.Reflection.TargetException: Объект не соответствует конечному типу.
+   в System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   в System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.GetValue(Object obj, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.GetValue(Object obj, Object[] index)
+   в System.Reflection.PropertyInfo.GetValue(Object obj)
+   в LaunchBot.Models.Texts.Update(String newText, String selectedText, String blockName) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 77
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 50
+30.01.2018 21:20:56: Bot is online.
+30.01.2018 21:42:38: Bot is online.
+30.01.2018 21:43:08: Bot was disabled by Terminate Button
+30.01.2018 21:43:24: Bot is online.
+30.01.2018 21:44:46: Bot is online.
+30.01.2018 21:45:05: Bot was disabled by Terminate Button
+30.01.2018 21:48:35: Bot is online.
+30.01.2018 21:49:04: Bot was disabled by Terminate Button
+01.02.2018 19:36:54: Bot is online.
+01.02.2018 19:37:58: Bot was disabled by Terminate Button
+01.02.2018 20:30:04: Bot is online.
+01.02.2018 20:30:31: Bot was disabled by Terminate Button
+01.02.2018 20:30:47: Bot is online.
+01.02.2018 20:31:38: Bot was disabled by Terminate Button
+01.02.2018 20:44:50: Bot is online.
+01.02.2018 20:45:18: Bot is online.
+01.02.2018 20:45:21: System.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.StateMachine.GetUserState(Int32 userId) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 290
+   в LaunchBot.StateMachine.Next(MessageEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 431
+   в LaunchBot.Controller.Bot_OnMessage(Object sender, MessageEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 115
+01.02.2018 20:45:27: System.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.StateMachine.GetUserState(Int32 userId) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 290
+   в LaunchBot.StateMachine.Next(MessageEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 431
+   в LaunchBot.Controller.Bot_OnMessage(Object sender, MessageEventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 115
+01.02.2018 20:45:35: Bot is online.
+01.02.2018 20:46:19: Bot is online.
+01.02.2018 20:46:51: Bot is online.
+01.02.2018 20:47:31: Bot was disabled by Terminate Button
+01.02.2018 20:49:59: Bot is online.
+01.02.2018 20:50:40: Bot is online.
+02.02.2018 14:08:28: Bot is online.
+02.02.2018 14:08:58: Bot was disabled by Terminate Button
+02.02.2018 14:09:59: Bot is online.
+02.02.2018 14:11:04: Bot is online.
+02.02.2018 14:12:56: Bot is online.
+02.02.2018 14:24:45: Bot is online.
+02.02.2018 14:25:10: Bot was disabled by Terminate Button
+02.02.2018 14:25:13: Bot is online.
+02.02.2018 14:33:10: Bot is online.
+02.02.2018 14:33:32: Bot is online.
+02.02.2018 14:33:34: Bot was disabled by Terminate Button
+02.02.2018 14:33:42: Bot is online.
+02.02.2018 14:34:52: Bot was disabled by Terminate Button
+02.02.2018 14:35:04: Bot is online.
+02.02.2018 14:37:39: Bot is online.
+02.02.2018 14:47:42: Bot is online.
+02.02.2018 14:50:19: Bot is online.
+02.02.2018 14:51:58: Bot is online.
+02.02.2018 14:54:39: Bot is online.
+02.02.2018 14:55:04: Bot was disabled by Terminate Button
+02.02.2018 14:57:14: Bot is online.
+02.02.2018 14:59:03: Bot is online.
+02.02.2018 14:59:35: Bot was disabled by Terminate Button
+02.02.2018 14:59:53: Bot is online.
+02.02.2018 15:00:25: Bot was disabled by Terminate Button
+02.02.2018 15:01:55: Bot is online.
+02.02.2018 15:08:27: Bot was disabled by Terminate Button
+02.02.2018 15:12:26: Bot is online.
+02.02.2018 15:12:40: Bot was disabled by Terminate Button
+02.02.2018 15:13:24: Bot is online.
+02.02.2018 15:13:37: Bot is online.
+02.02.2018 15:13:43: Bot was disabled by Terminate Button
+02.02.2018 15:16:21: Bot is online.
+02.02.2018 15:17:17: Bot was disabled by Terminate Button
+02.02.2018 15:32:21: Bot is online.
+02.02.2018 15:39:37: Bot was disabled by Terminate Button
+02.02.2018 15:42:38: Bot is online.
+02.02.2018 15:45:19: Bot is online.
+02.02.2018 15:45:31: Bot was disabled by Terminate Button
+02.02.2018 15:55:41: Bot is online.
+02.02.2018 15:57:20: Bot is online.
+02.02.2018 15:57:27: Bot was disabled by Terminate Button
+02.02.2018 15:58:56: Bot is online.
+02.02.2018 16:00:19: Bot was disabled by Terminate Button
+02.02.2018 16:00:33: Bot is online.
+02.02.2018 16:01:05: Bot was disabled by Terminate Button
+02.02.2018 16:01:28: Bot is online.
+02.02.2018 16:01:40: Bot was disabled by Terminate Button
+02.02.2018 16:02:20: Bot is online.
+02.02.2018 16:02:32: Bot was disabled by Terminate Button
+02.02.2018 16:02:41: Bot is online.
+02.02.2018 16:03:52: Bot is online.
+02.02.2018 16:04:20: Bot is online.
+02.02.2018 16:05:13: Bot was disabled by Terminate Button
+02.02.2018 16:05:40: Bot is online.
+02.02.2018 16:09:12: Bot was disabled by Terminate Button
+02.02.2018 16:11:03: Bot is online.
+02.02.2018 16:12:39: Bot was disabled by Terminate Button
+02.02.2018 16:13:06: Bot is online.
+02.02.2018 16:27:26: Bot was disabled by Terminate Button
+02.02.2018 16:40:12: Bot is online.
+02.02.2018 16:40:19: Bot was disabled by Terminate Button
