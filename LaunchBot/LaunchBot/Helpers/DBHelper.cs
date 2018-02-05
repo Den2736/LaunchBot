@@ -35,6 +35,20 @@ namespace LaunchBot.Helpers
                 }
             }
         }
+        public static void UserPassedTheBlock(int id, Block block)
+        {
+            using (var db = GetConnection())
+            {
+                var user = db.Find<User>(id);
+                switch (block)
+                {
+                    case Block.Lamagna:{ user.LamagnaPassed = true; break; }
+                    case Block.Trippier:{ user.TrippierPassed = true; break; }
+                    case Block.MainProduct:{ user.MainProductPassed = true; break; }
+                }
+                db.Update(user);
+            }
+        }
 
         public static void CheckDB()
         {

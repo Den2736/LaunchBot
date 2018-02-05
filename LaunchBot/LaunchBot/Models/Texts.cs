@@ -18,22 +18,22 @@ namespace LaunchBot.Models
 
         private string fileName = "Texts.xml";
 
-        public string Positive { get; set; }
-        public string Negative { get; set; }
+        private readonly string[] BlockNames = new string[] { Block.Lamagna.ToString(), Block.Trippier.ToString(), Block.MainProduct.ToString(), Block.PersonalAccount.ToString(), Block.Other.ToString() };
+        private readonly string[] BlockDisplayNames = new string[] { LamagnaBlock, TrippierBlock, MainProductBlock, OtherBlock };
+
+        public Lamagna Lamagna { get; } = new Lamagna();
+        public Trippier Trippier { get; } = new Trippier();
+        public MainProduct MainProduct { get; } = new MainProduct();
+        public PersonalAccount PersonalAccount { get; } = new PersonalAccount();
+        public Other Other { get; } = new Other();
+
         public string BackButton = $"{Emoji.Back} Назад";
         public string ToStartButton = $"{Emoji.Top} К началу";
 
-        public string PositiveName = "Положительный ответ";
-        public string NegativeName = "Отрицательный ответ";
-        public string LamagnaBlock = "Лидмагнит";
-        public string TrippierBlock = "Трипвайер";
-        public string MainProductBlock = "Главный продукт";
-
-        private readonly string[] BlockNames = new string[]{ Block.Lamagna.ToString(), Block.Trippier.ToString(), Block.MainProduct.ToString(), Block.PersonalAccount.ToString() };
-        public Lamagna Lamagna { get; } = new Lamagna();
-        public Trippier Trippier{ get; } = new Trippier();
-        public MainProduct MainProduct { get; } = new MainProduct();
-        public PersonalAccount PersonalAccount { get; } = new PersonalAccount();
+        public static string LamagnaBlock = "Лидмагнит";
+        public static string TrippierBlock = "Трипвайер";
+        public static string MainProductBlock = "Главный продукт";
+        public static string OtherBlock = "Другое";
 
         public void Update(Block? block, string fieldDisplayName, string newText)
         {
@@ -163,6 +163,11 @@ namespace LaunchBot.Models
             return "";
         }
 
+        public bool ValidBlockName(string blockName)
+        {
+            return BlockDisplayNames.Contains(blockName);
+        }
+
         private PropertyInfo GetFieldInfo (object blockObj, string fieldDisplayName)
         {
             if (blockObj != null)
@@ -192,6 +197,13 @@ namespace LaunchBot.Models
         }
     }
 
+    public class Other
+    {
+        [DisplayName("Положительный ответ")] public string Positive { get; set; }
+        [DisplayName("Отрицательный ответ")] public string Negative { get; set; }
+        [DisplayName("Контакты")] public string Contacts { get; set; }
+    }
+
     public class Lamagna
     {
         [DisplayName("Приветствие")] public string Greeting { get; set; }
@@ -219,12 +231,11 @@ namespace LaunchBot.Models
         [DisplayName("Текст 1")] public string Text1 { get; set; }
         [DisplayName("Кнопка 1")] public string Button1 { get; set; }
         [DisplayName("Кнопка 2")] public string Button2 { get; set; }
-        [DisplayName("Контакты")] public string Contacts { get; set; }
     }
 
     public class PersonalAccount
     {
-        public string PersonalAccountButton = "Личный кабинет";
+        public string PersonalAccountButton = $"{Emoji.Door} Личный кабинет";
 
         public string PersnonalAccountGreeting(string name) => $"Добро пожаловать, {name}! {Emoji.EyeHearts}";
         public string StatisticsButton = $"{Emoji.Graphic} Статистика";
@@ -282,6 +293,7 @@ namespace LaunchBot.Models
         Lamagna,
         Trippier,
         MainProduct,
-        PersonalAccount
+        PersonalAccount,
+        Other
     }
 }

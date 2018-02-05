@@ -11,16 +11,14 @@ namespace LaunchBot.Helpers
     {
         private static Lazy<ConnectionMultiplexer> LazyConnection => new Lazy<ConnectionMultiplexer>(() =>
         {
-            try
-            {
-                return ConnectionMultiplexer.Connect("localhost");
-            }
-            catch (RedisConnectionException ex)
-            {
-                throw new ArgumentNullException("Ошибка подключения к базе данных Redis. " + ex.ToString(), ex);
-            }
+            return ConnectionMultiplexer.Connect("localhost");
         });
 
         public static ConnectionMultiplexer Connection => LazyConnection.Value;
+
+        public static bool ConnectionIsWell()
+        {
+            return Connection.IsConnected;
+        }
     }
 }

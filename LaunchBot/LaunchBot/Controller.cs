@@ -9,12 +9,14 @@ using Telegram.Bot.Types.InlineKeyboardButtons;
 using Telegram.Bot.Types.ReplyMarkups;
 using LaunchBot.Helpers;
 using LaunchBot.Models;
+using LaunchBot.Models.EventArgs;
+using StackExchange.Redis;
 
 namespace LaunchBot
 {
     public class Controller
     {
-        private MainForm Form;
+        protected MainForm Form;
         //protected readonly string Token = "457947516:AAFHOqCs0yU0jtWVNIch-YbaUWsAUU3nk84";
         protected readonly string ProgrammerId = "433094062";  // @Den2736
         protected readonly string LogId = "-1001363037234";  // BotLog
@@ -43,48 +45,63 @@ namespace LaunchBot
         {
             try
             {
-                Texts = new Texts();
-                Texts.Load();
-                StateMachine = new StateMachine(Texts);
-                Keyboards.SetTexts(Texts);
+                LoadTexts();
             }
             catch (Exception ex)
             {
                 string errorMessage = "Ошибка загрузки текстов ";
-                ShowFatalError(errorMessage);
+                FatalError(errorMessage);
                 Logger.Log(errorMessage + ex.ToString());
                 return;
             }
 
             try
             {
-                Bot = new TelegramBotClient(e.Token);
+                BotInitialize(e);
             }
             catch (ArgumentException)
             {
-                ShowError("Error 404: bot not found.");
+                FatalError("Error 404: bot not found.");
+                return;
+            }
+            catch (Exception ex)
+            {
+                FatalError("Ошибка инициализации бота", ex);
                 return;
             }
 
             try
             {
-                DBHelper.CheckDB();
-                StateMachine.Bot = Bot;
-                Bot.OnMessage += Bot_OnMessage;
-                Bot.OnCallbackQuery += Bot_OnCallbackQuery;
-                Bot.StartReceiving();
-                Form.SetLaunchButton(false);
-                Form.SetTerminateButton(true);
-                Form.SetBotName(Bot.GetMeAsync().Result.Username);
-                string message = "Bot is online.";
-                Form.SetSuccessStatus(message);
-                Logger.Log(message);
+                CheckDB();
             }
             catch (Exception ex)
             {
-                string errorMessage = "Bot activation error. ";
-                Form.SetDangerStatus(errorMessage + "Look logs for more details.");
+                FatalError("Ошибка базы данных. См.логи");
+                Logger.Log("Ошибка базы данных" + ex.ToString());
+                return;
+            }
+
+            try
+            {
+                CheckRedis();
+            }
+            catch (Exception ex)
+            {
+                FatalError("Ошибка хэшированной базы данных. См.логи", ex);
+                Logger.Log("Ошибка хэшированной базы данных" + Environment.NewLine + ex.ToString());
+                return;
+            }
+
+            try
+            {
+                ActivateBot();
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = "Ошибка активации бота. См.логи. ";
+                FatalError(errorMessage);
                 Logger.Log(errorMessage + ex.ToString());
+                return;
             }
         }
 
@@ -132,7 +149,7 @@ namespace LaunchBot
             catch (ArgumentNullException ex)
             {
                 Logger.Log(ex.ToString());
-                ShowFatalError("Ошибка подключения к базе данных Redis");
+                FatalError("Ошибка подключения к базе данных Redis");
             }
             catch (Exception ex)
             {
@@ -141,15 +158,18 @@ namespace LaunchBot
             }
         }
 
-        protected void ShowFatalError(string errorMessage)
+        protected void FatalError(string errorMessage, Exception e = null)
         {
             try
             {
-                Bot.SendTextMessageAsync(LogId, $"Fatal error {Bot.GetMeAsync().Result.Username}: {Environment.NewLine} " +
-                    errorMessage);
+                string message = $"Fatal error {Bot.GetMeAsync().Result.Username}: {Environment.NewLine} " +
+                    $"{errorMessage} {Environment.NewLine}" +
+                    $"{e.ToString()}";
+                Bot.SendTextMessageAsync(LogId, message);
             }
             catch { }
 
+            Bot.StopReceiving();
             Form.SetLaunchButton(false);
             Form.SetTerminateButton(false);
             Form.SetDangerStatus(errorMessage);
@@ -158,6 +178,48 @@ namespace LaunchBot
         protected void ShowError(string errorMessage)
         {
             Form.SetDangerStatus(errorMessage);
+        }
+
+        private void LoadTexts()
+        {
+            Form.SetNeutralStatus("Загрузка текстов...");
+            Texts = new Texts();
+            Texts.Load();
+            StateMachine = new StateMachine(Texts);
+            Keyboards.SetTexts(Texts);
+        }
+        private void BotInitialize(LaunchBotEventArgs e)
+        {
+            Form.SetNeutralStatus("Инициализация бота...");
+            Bot = new TelegramBotClient(e.Token);
+        }
+        private void CheckDB()
+        {
+            Form.SetNeutralStatus("Проверка базы данных...");
+            DBHelper.CheckDB();
+        }
+        private void CheckRedis()
+        {
+            Form.SetNeutralStatus("Проверка хэшированной базы данных...");
+            if (!RedisConnectorHelper.ConnectionIsWell())
+            {
+                FatalError("Ошибка хэшированной базы данных. См.логи");
+                Logger.Log("Ошибка хэшированной базы данных");
+            }
+        }
+        private void ActivateBot()
+        {
+            Form.SetNeutralStatus("Активация бота...");
+            StateMachine.Bot = Bot;
+            Bot.OnMessage += Bot_OnMessage;
+            Bot.OnCallbackQuery += Bot_OnCallbackQuery;
+            Bot.StartReceiving();
+            Form.SetLaunchButton(false);
+            Form.SetTerminateButton(true);
+            Form.SetBotName(Bot.GetMeAsync().Result.Username);
+            string message = "Bot is online.";
+            Form.SetSuccessStatus(message);
+            Logger.Log(message);
         }
     }
 
@@ -173,107 +235,112 @@ namespace LaunchBot
             var userId = e.CallbackQuery.From.Id;
             string message = e.CallbackQuery.Message.Text;
             string btnText = e.CallbackQuery.Data;
-
-            // LAMAGNA
-            if (message == Texts.Lamagna.Greeting)
+            try
             {
-                if (btnText == Texts.Lamagna.Button1)
+                // LAMAGNA
+                if (message == Texts.Lamagna.Greeting)
                 {
-                    SetLamagna1State(e);
-                }
-                else if (btnText == Texts.PersonalAccount.PersonalAccountButton)
-                {
-                    SetChooseSettingsState(e);
-                }
-            }
-            else if (message == Texts.Lamagna.Text1)
-            {
-                if (btnText == Texts.Positive)
-                {
-                    SetLamagna2State(e);
-                }
-                else if (btnText == Texts.Negative)
-                {
-                    SetLamagna3State(e);
-                }
-            }
-            else if (message == Texts.Lamagna.Text2)
-            {
-                if (btnText == Texts.Positive)
-                {
-                    using (var db = DBHelper.GetConnection())
+                    if (btnText == Texts.Lamagna.Button1)
                     {
-                        var user = db.Find<User>(userId);
-                        user.LamagnaPassed = true;
-                        db.Update(user);
+                        SetLamagna1State(e);
                     }
-                    SetTrippier1State(e);
+                    else if (btnText == Texts.PersonalAccount.PersonalAccountButton)
+                    {
+                        SetChooseSettingsState(e);
+                    }
                 }
-                else if (btnText == Texts.Negative)
+                else if (message == Texts.Lamagna.Text1)
                 {
-                    SetLamagna4State(e);
+                    if (btnText == Texts.Other.Positive)
+                    {
+                        SetLamagna2State(e);
+                    }
+                    else if (btnText == Texts.Other.Negative)
+                    {
+                        SetLamagna3State(e);
+                    }
                 }
-            }
-            else if (message == Texts.Lamagna.Text3)
-            {
-                if (btnText == Texts.Lamagna.Button2)
+                else if (message == Texts.Lamagna.Text2)
                 {
-                    SetLamagna2State(e);
+                    if (btnText == Texts.Other.Positive)
+                    {
+                        DBHelper.UserPassedTheBlock(userId, Block.Lamagna);
+                        SetTrippier1State(e);
+                    }
+                    else if (btnText == Texts.Other.Negative)
+                    {
+                        SetLamagna4State(e);
+                    }
                 }
-            }
-            else if (message == Texts.Lamagna.Text4)
-            {
-                if (btnText == Texts.Lamagna.Button3)
+                else if (message == Texts.Lamagna.Text3)
                 {
-                    SetTrippier1State(e);
+                    if (btnText == Texts.Lamagna.Button2)
+                    {
+                        SetLamagna2State(e);
+                    }
                 }
-            }
+                else if (message == Texts.Lamagna.Text4)
+                {
+                    if (btnText == Texts.Lamagna.Button3)
+                    {
+                        DBHelper.UserPassedTheBlock(userId, Block.Lamagna);
+                        SetTrippier1State(e);
+                    }
+                }
 
-            // TRIPPIER
-            else if (message == Texts.Trippier.Text1)
-            {
-                if (btnText == Texts.Positive)
+                // TRIPPIER
+                else if (message == Texts.Trippier.Text1)
                 {
-                    SetMainProductState(e);
+                    if (btnText == Texts.Other.Positive)
+                    {
+                        DBHelper.UserPassedTheBlock(userId, Block.Trippier);
+                        SetMainProductState(e);
+                    }
+                    else if (btnText == Texts.Other.Negative)
+                    {
+                        SetTrippier2State(e);
+                    }
                 }
-                else if (btnText == Texts.Negative)
+                else if (message == Texts.Trippier.Text2)
                 {
-                    SetTrippier2State(e);
+                    if (btnText == Texts.Other.Positive)
+                    {
+                        SetTrippier3State(e);
+                    }
+                    else if (btnText == Texts.Other.Negative)
+                    {
+                        SetTrippier1State(e);
+                    }
                 }
-            }
-            else if (message == Texts.Trippier.Text2)
-            {
-                if (btnText == Texts.Positive)
+                else if (message == Texts.Trippier.Text3)
                 {
-                    SetTrippier3State(e);
+                    if (btnText == Texts.Trippier.Button1)
+                    {
+                        SetContactsState(e);
+                    }
                 }
-                else if (btnText == Texts.Negative)
-                {
-                    SetTrippier1State(e);
-                }
-            }
-            else if (message == Texts.Trippier.Text3)
-            {
-                if (btnText == Texts.Trippier.Button1)
-                {
-                    SetContactsState(e);
-                }
-            }
 
-            // MAIN PRODUCT
-            else if (message == Texts.MainProduct.Text1)
-            {
-                if (btnText == Texts.MainProduct.Button1)
+                // MAIN PRODUCT
+                else if (message == Texts.MainProduct.Text1)
                 {
-                    SetContactsState(e);
+                    if (btnText == Texts.MainProduct.Button1)
+                    {
+                        DBHelper.UserPassedTheBlock(userId, Block.MainProduct);
+                        SetContactsState(e);
+                    }
+                }
+                else if (message == Texts.Other.Contacts)
+                {
+                    if (btnText == Texts.MainProduct.Button2)
+                    {
+                        SetGreetingState(e.CallbackQuery.From.Id);
+                    }
                 }
             }
-            else if (message == Texts.MainProduct.Contacts)
+            catch (Exception ex)
             {
-                if (btnText == Texts.MainProduct.Button2)
-                {
-                    SetGreetingState(e.CallbackQuery.From.Id);
-                }
+                Form.SetDangerStatus($"Ошибка. См. логи");
+                Logger.Log(ex.ToString());
             }
         }
 
@@ -295,7 +362,7 @@ namespace LaunchBot
             {
                 string errorMessage = "Ошибка: сервер Redis недоступен. ";
                 Logger.Log(errorMessage + ex.ToString());
-                ShowFatalError(errorMessage);
+                FatalError(errorMessage);
             }
             return state;
         }
@@ -397,7 +464,7 @@ namespace LaunchBot
         private async void SetContactsState(Telegram.Bot.Args.CallbackQueryEventArgs e)
         {
             var userId = e.CallbackQuery.From.Id;
-            var text = Texts.MainProduct.Contacts;
+            var text = Texts.Other.Contacts;
             var keyboard = Keyboards.MainProduct.ContactsKeyboard;
             await Bot.AnswerCallbackQueryAsync(e.CallbackQuery.Id, "");
             await Bot.SendTextMessageAsync(userId, text, replyMarkup: keyboard);
@@ -424,104 +491,117 @@ namespace LaunchBot
         }
 
 
-        public void Next(Telegram.Bot.Args.MessageEventArgs e)
+        public async void Next(Telegram.Bot.Args.MessageEventArgs e)
         {
             var userId = e.Message.From.Id;
             string btnText = e.Message.Text;
             var state = GetUserState(userId);
 
-            if (btnText == Texts.ToStartButton)
+            try
             {
-                SetGreetingState(e.Message.From.Id);
-            }
-            else
-            {
-                switch (state)
+                if (btnText == Texts.ToStartButton)
                 {
-                    case State.ChooseSettings:
-                        {
-                            if (btnText == Texts.PersonalAccount.StatisticsButton)
+                    SetGreetingState(e.Message.From.Id);
+                }
+                else
+                {
+                    switch (state)
+                    {
+                        case State.ChooseSettings:
                             {
-                                SetChooseStatisticsState(e);
-                            }
-                            else if (btnText == Texts.PersonalAccount.TextsEditingButton)
-                            {
-                                SetChooseBlockState(e);
-                            }
-                            else if (btnText == Texts.BackButton)
-                            {
-                                SetGreetingState(e.Message.From.Id);
-                            }
-                            break;
-                        }
-                    case State.ChooseStatistics:
-                        {
-                            if (btnText == Texts.PersonalAccount.AllUsersButton)
-                            {
-                                ShowAllUsers(e);
-                            }
-                            else if (btnText == Texts.PersonalAccount.LamagnaPassedUsersButton)
-                            {
-                                ShowLamagnaPassedUsers(e);
-                            }
-                            else if (btnText == Texts.PersonalAccount.TrippierPassedUsersButton)
-                            {
-                                ShowTrippierPassedUsers(e);
-                            }
-                            else if (btnText == Texts.PersonalAccount.MainProductPassedUsersButton)
-                            {
-                                ShowMainProductPassedUsers(e);
-                            }
-                            else if (btnText == Texts.BackButton)
-                            {
-                                SetChooseSettingsState(e);
-                            }
-                            break;
-                        }
-                    case State.ChooseBlockToEdit:
-                        {
-                            if (btnText == Texts.BackButton)
-                            {
-                                SetChooseSettingsState(e);
-                            }
-                            else
-                            {
-                                SaveBlockChoice(userId, e.Message.Text);
-                                SetChooseTextState(e);
-                            }
-                            break;
-                        }
-                    case State.ChooseTextToEdit:
-                        {
-                            if (btnText == Texts.BackButton)
-                            {
-                                SetChooseBlockState(e);
-                            }
-                            else
-                            {
-                                SaveTextChoice(userId, e.Message.Text);
-                                SetEnterNewTextState(e);
-                            }
-                            break;
-                        }
-                    case State.EnterNewText:
-                        {
-                            if (btnText == Texts.BackButton)
-                            {
-                                SetChooseTextState(e);
-                            }
-                            else
-                            {
-                                if (string.IsNullOrEmpty(btnText))
+                                if (btnText == Texts.PersonalAccount.StatisticsButton)
                                 {
-                                    Bot.SendTextMessageAsync(userId, "Молчание не привлечёт к вам клиентов!");
+                                    SetChooseStatisticsState(e);
+                                }
+                                else if (btnText == Texts.PersonalAccount.TextsEditingButton)
+                                {
+                                    SetChooseBlockState(e);
+                                }
+                                else if (btnText == Texts.BackButton)
+                                {
+                                    SetGreetingState(e.Message.From.Id);
+                                }
+                                break;
+                            }
+                        case State.ChooseStatistics:
+                            {
+                                if (btnText == Texts.PersonalAccount.AllUsersButton)
+                                {
+                                    ShowAllUsers(e);
+                                }
+                                else if (btnText == Texts.PersonalAccount.LamagnaPassedUsersButton)
+                                {
+                                    ShowLamagnaPassedUsers(e);
+                                }
+                                else if (btnText == Texts.PersonalAccount.TrippierPassedUsersButton)
+                                {
+                                    ShowTrippierPassedUsers(e);
+                                }
+                                else if (btnText == Texts.PersonalAccount.MainProductPassedUsersButton)
+                                {
+                                    ShowMainProductPassedUsers(e);
+                                }
+                                else if (btnText == Texts.BackButton)
+                                {
+                                    SetChooseSettingsState(e);
+                                }
+                                break;
+                            }
+                        case State.ChooseBlockToEdit:
+                            {
+                                if (btnText == Texts.BackButton)
+                                {
+                                    SetChooseSettingsState(e);
+                                }
+                                else if (Texts.ValidBlockName(e.Message.Text))
+                                {
+                                    SaveBlockChoice(userId, e.Message.Text);
                                     SetChooseTextState(e);
                                 }
-                                UpdateText(e);
+                                else
+                                {
+                                    await Bot.SendTextMessageAsync(userId, $"{Emoji.Error} Нет такого блока.");
+                                    SetChooseBlockState(e);
+                                }
+                                break;
                             }
-                            break;
-                        }
+                        case State.ChooseTextToEdit:
+                            {
+                                if (btnText == Texts.BackButton)
+                                {
+                                    SetChooseBlockState(e);
+                                }
+                                else
+                                {
+                                    SaveTextChoice(userId, e.Message.Text);
+                                    SetEnterNewTextState(e);
+                                }
+                                break;
+                            }
+                        case State.EnterNewText:
+                            {
+                                if (btnText == Texts.BackButton)
+                                {
+                                    SetChooseTextState(e);
+                                }
+                                else
+                                {
+                                    if (string.IsNullOrEmpty(btnText))
+                                    {
+                                        await Bot.SendTextMessageAsync(userId, "Молчание не привлечёт к вам клиентов!");
+                                        SetChooseTextState(e);
+                                    }
+                                    UpdateText(e);
+                                }
+                                break;
+                            }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Form.SetDangerStatus($"Ошибка. См. логи");
+                Logger.Log(ex.ToString());
             }
         }
 
@@ -622,14 +702,22 @@ namespace LaunchBot
             var userId = e.Message.From.Id;
             var block = GetBlockChoice(userId);
             var text =
-                $"{Texts.PersonalAccount.YouWantToChange} *{e.Message.Text}* {Environment.NewLine}" +
-                $"_{Texts.GetText(block, e.Message.Text)}_";
-            await Bot.SendTextMessageAsync(userId, text, Telegram.Bot.Types.Enums.ParseMode.Markdown);
-
-            text = Texts.PersonalAccount.EnterNewText;
-            var keyboard = Keyboards.PersonalAccount.EnterNewTextKeyboard;
-            await Bot.SendTextMessageAsync(userId, text, replyMarkup: keyboard);
-            SetState(userId, State.EnterNewText);
+                $"{Texts.PersonalAccount.YouWantToChange} *{e.Message.Text}* {Environment.NewLine}";
+            var currentText = Texts.GetText(block, e.Message.Text);
+            if (string.IsNullOrEmpty(currentText))
+            {
+                text = $"{Emoji.Error} Такого текста не существует.";
+                await Bot.SendTextMessageAsync(userId, text);
+                SetChooseTextState(e);
+            }
+            else
+            {
+                await Bot.SendTextMessageAsync(userId, text, Telegram.Bot.Types.Enums.ParseMode.Markdown);
+                text = Texts.PersonalAccount.EnterNewText;
+                var keyboard = Keyboards.PersonalAccount.EnterNewTextKeyboard;
+                await Bot.SendTextMessageAsync(userId, text, replyMarkup: keyboard);
+                SetState(userId, State.EnterNewText);
+            }
         }
 
         private async void UpdateText(Telegram.Bot.Args.MessageEventArgs e)
@@ -657,6 +745,10 @@ namespace LaunchBot
             else if (block == Texts.MainProductBlock)
             {
                 block = Block.MainProduct.ToString();
+            }
+            else if (block == Texts.OtherBlock)
+            {
+                block = Block.Other.ToString();
             }
 
             var cache = RedisConnectorHelper.Connection.GetDatabase();

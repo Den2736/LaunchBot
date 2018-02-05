@@ -25,8 +25,8 @@ namespace LaunchBot.Models
                 {
                     new InlineKeyboardButton[]
                     {
-                        new KeyboardButton(Texts.Negative),
-                        new KeyboardButton(Texts.Positive)
+                        new KeyboardButton(Texts.Other.Negative),
+                        new KeyboardButton(Texts.Other.Positive)
                     }
                 }
         };
@@ -173,7 +173,8 @@ namespace LaunchBot.Models
                     {
                         new KeyboardButton(Texts.LamagnaBlock),
                         new KeyboardButton(Texts.TrippierBlock),
-                        new KeyboardButton(Texts.MainProductBlock)
+                        new KeyboardButton(Texts.MainProductBlock),
+                        new KeyboardButton(Texts.OtherBlock)
                     },
                     new KeyboardButton[]
                     {
@@ -224,7 +225,8 @@ namespace LaunchBot.Models
                         new KeyboardButton(Texts.ToStartButton)
                     }
                 },
-                OneTimeKeyboard = true
+                OneTimeKeyboard = true,
+                ResizeKeyboard = true
             };
         }
     }

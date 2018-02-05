@@ -90,7 +90,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\LaunchBotEventArgs.cs" />
+    <Compile Include="Models\EventArgs\LaunchBotEventArgs.cs" />
     <Compile Include="Models\Emoji.cs" />
     <Compile Include="Models\States.cs" />
     <Compile Include="Models\Texts.cs" />

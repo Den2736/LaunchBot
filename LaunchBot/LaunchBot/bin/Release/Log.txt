@@ -12,3 +12,18 @@
    в System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
    в LaunchBot.Models.Texts.Load() в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Models\Texts.cs:строка 86
    в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, EventArgs e) в D:\YandexDisk\Buffer\codes\LaunchBot\LaunchBot\Controller.cs:строка 54
+
+05.02.2018 13:32:57: Ошибка загрузки текстов System.IO.FileNotFoundException: Файл 'C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\bin\Release\Texts.xml' не найден.
+Имя файла: 'C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\bin\Release\Texts.xml'
+   в System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   в System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   в System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   в System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   в System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   в System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   в System.Xml.XmlTextReaderImpl..ctor(String uriStr, XmlReaderSettings settings, XmlParserContext context, XmlResolver uriResolver)
+   в System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   в System.Xml.XmlReader.Create(String inputUri, XmlReaderSettings settings, XmlParserContext inputContext)
+   в System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Models\Texts.cs:строка 99
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 47

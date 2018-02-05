@@ -29,7 +29,7 @@ namespace LaunchBot.Models
 
         public override string ToString()
         {
-            return $"Пользователь {LastName} {FirstName} с ником @{UserName}";
+            return $"{LastName} {FirstName} (@{UserName})";
         }
     }
 }

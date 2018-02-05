@@ -278,3 +278,131 @@
 02.02.2018 16:27:26: Bot was disabled by Terminate Button
 02.02.2018 16:40:12: Bot is online.
 02.02.2018 16:40:19: Bot was disabled by Terminate Button
+05.02.2018 13:33:13: Ошибка загрузки текстов System.ArgumentException: Не найден метод присваивания значения свойству.
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Models\Texts.cs:строка 110
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 47
+05.02.2018 13:34:28: Ошибка загрузки текстов System.ArgumentException: Не найден метод присваивания значения свойству.
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   в System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   в System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   в LaunchBot.Models.Texts.Load() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Models\Texts.cs:строка 108
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 47
+05.02.2018 13:36:22: Bot is online.
+05.02.2018 13:36:45: Bot was disabled by Terminate Button
+05.02.2018 13:37:22: Bot is online.
+05.02.2018 13:39:17: Bot was disabled by Terminate Button
+05.02.2018 13:39:23: Bot is online.
+05.02.2018 13:40:06: Bot was disabled by Terminate Button
+05.02.2018 13:41:24: Bot is online.
+05.02.2018 13:46:36: Bot is online.
+05.02.2018 13:48:15: Bot is online.
+05.02.2018 13:48:39: Bot was disabled by Terminate Button
+05.02.2018 13:49:03: Bot is online.
+05.02.2018 13:49:32: Bot was disabled by Terminate Button
+05.02.2018 13:58:47: Bot is online.
+05.02.2018 13:59:18: Bot was disabled by Terminate Button
+05.02.2018 13:59:38: Bot is online.
+05.02.2018 13:59:50: Bot was disabled by Terminate Button
+05.02.2018 14:00:03: Bot is online.
+05.02.2018 14:02:54: Bot was disabled by Terminate Button
+05.02.2018 14:05:58: Bot is online.
+05.02.2018 14:06:47: Bot is online.
+05.02.2018 14:06:59: Bot is online.
+05.02.2018 14:08:43: Bot was disabled by Terminate Button
+05.02.2018 14:13:23: Bot is online.
+05.02.2018 14:13:49: Bot was disabled by Terminate Button
+05.02.2018 14:14:13: Bot is online.
+05.02.2018 14:14:41: Bot was disabled by Terminate Button
+05.02.2018 14:16:01: Bot is online.
+05.02.2018 14:16:23: Bot was disabled by Terminate Button
+05.02.2018 14:20:48: Bot is online.
+05.02.2018 14:20:52: Bot was disabled by Terminate Button
+05.02.2018 14:20:58: Bot is online.
+05.02.2018 14:23:51: Ошибка хэшированной базы данныхSystem.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.Helpers.RedisConnectorHelper.ConnectionIsWell() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 28
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 85
+05.02.2018 14:24:42: Bot is online.
+05.02.2018 14:25:22: Ошибка хэшированной базы данныхSystem.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.Helpers.RedisConnectorHelper.ConnectionIsWell() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 28
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 85
+05.02.2018 14:26:12: Bot is online.
+05.02.2018 14:28:26: Ошибка хэшированной базы данныхSystem.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.Helpers.RedisConnectorHelper.ConnectionIsWell() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 28
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 86
+05.02.2018 14:32:47: Ошибка хэшированной базы данныхSystem.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.Helpers.RedisConnectorHelper.ConnectionIsWell() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 28
+   в LaunchBot.Controller.CheckRedis() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 174
+05.02.2018 14:32:48: Bot is online.
+05.02.2018 15:00:26: Ошибка хэшированной базы данных
+System.ArgumentNullException: Ошибка подключения к базе данных Redis. StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16 ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   в StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(Func`1 multiplexerFactory, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 890
+   в StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) в c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:строка 855
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 16
+   --- Конец трассировки внутреннего стека исключений ---
+   в LaunchBot.Helpers.RedisConnectorHelper.<>c.<get_LazyConnection>b__1_0() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 20
+   в System.Lazy`1.CreateValue()
+   в System.Lazy`1.LazyInitValue()
+   в System.Lazy`1.get_Value()
+   в LaunchBot.Helpers.RedisConnectorHelper.get_Connection() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 24
+   в LaunchBot.Helpers.RedisConnectorHelper.ConnectionIsWell() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Helpers\RedisConnectorHelper.cs:строка 28
+   в LaunchBot.Controller.CheckRedis() в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 203
+   в LaunchBot.Controller.Form_OnLaunchButtonClick(Object sender, LaunchBotEventArgs e) в C:\Users\babenko.dy\Documents\GitHub\LaunchBot\LaunchBot\LaunchBot\Controller.cs:строка 86
+05.02.2018 15:01:37: Bot is online.
+05.02.2018 15:01:42: Bot was disabled by Terminate Button
+05.02.2018 15:04:09: Bot is online.
+05.02.2018 15:05:40: Bot is online.
+05.02.2018 15:07:01: Bot is online.

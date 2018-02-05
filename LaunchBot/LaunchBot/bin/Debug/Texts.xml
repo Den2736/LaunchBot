@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
-  <Positive>ДА</Positive>
-  <Negative>НЕТ</Negative>
+  <Other>
+    <Negative>НЕТ</Negative>
+    <Positive>Okey boss</Positive>
+    <Contacts>э</Contacts>
+  </Other>
   <Lamagna>
     <Text3>Текст3 (Инструкция о регистрации)</Text3>
     <Text4>Текст4 (Любая информация)</Text4>
@@ -22,6 +25,5 @@
     <Text1>Текст1 (Любой текст (продажа))</Text1>
     <Button1>Кнопка1</Button1>
     <Button2>К началу</Button2>
-    <Contacts>Контакты</Contacts>
   </MainProduct>
 </Root>

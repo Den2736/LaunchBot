@@ -20,5 +20,7 @@ namespace LaunchBot.Models
         public static string Eyes => "👀";
         public static string MoneyWithWings => "💸";
         public static string Success => "✅";
+        public static string Error => "⛔️";
+        public static string Door => "🚪";
     }
 }
